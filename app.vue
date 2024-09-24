@@ -10,7 +10,7 @@ const errors = ref<{ code: string, message: string, path: string [], validation:
 
 useHead({
   bodyAttrs: {
-    class: 'bg-zinc-50 dark:bg-black'
+    class: 'bg-black'
   }
 })
 
@@ -69,7 +69,7 @@ const currentYear = computed(() => new Date().getFullYear())
             in minutes</h1>
 
           <p class="mt-4 text-sm/6 text-gray-300">
-            Save time using the <strong>NuxtHub-Landing template</strong>, to verify your ideas. Deploy it for
+            Save time using the <strong class="text-[#D65320]">#NuxtHubLanding</strong> boilerplate, to verify your ideas. Deploy it for
             free on NuxtHub, collect leads for your next big thing.
           </p>
 
@@ -81,7 +81,7 @@ const currentYear = computed(() => new Date().getFullYear())
                 <div class="flex items-center gap-2 justify-between px-4 py-1.5 border border-[#D65320] rounded-lg">
                   <label for="email" class="sr-only">E-Mail</label>
                   <input
-                      class="px-2 md:px-4 py-1 md:py-2 flex-1 bg-transparent text-white transition-colors hover:bg-zinc-50 dark:hover:bg-zinc-900 ease-linear duration-300  rounded"
+                      class="px-2 md:px-4 py-1 md:py-2 flex-1 bg-transparent text-white transition-colors hover:bg-zinc-900 ease-linear duration-300  rounded"
                       v-model="email" id="email" required
                       type="text" placeholder="E-Mail Address"/>
                   <button
@@ -90,7 +90,7 @@ const currentYear = computed(() => new Date().getFullYear())
                     Waitlist
                   </button>
                 </div>
-                <p class="text-base/6 text-red-600 data-[disabled]:opacity-50 sm:text-sm/6 dark:text-red-500"
+                <p class="text-base/6 text-red-500 data-[disabled]:opacity-50 sm:text-sm/6"
                    v-for="error in errors">{{ error.path.join(',') }}: {{ error.message }}</p>
               </div>
 
@@ -114,9 +114,9 @@ const currentYear = computed(() => new Date().getFullYear())
           </div>
         </div>
 
-        <div class="mt-32 relative mx-auto w-[200px] md:mx-0 md:w-[100px] ">
-          <p class="absolute -top-10 -left-2 px-1.5 py-1 text-xs  text-gray-300">
-            🪛 Build with
+        <div class="mt-32 relative mx-auto w-[200px] md:mx-0 md:w-[100px]">
+          <p class="bg-zinc-900 leading-none absolute -top-10 -left-2 px-1.5 py-1 text-xs  text-gray-300">
+            Build with
           </p>
           <ul class="space-y-5">
             <li><a href="https://nuxt.com/" target="_blank" rel="noreferrer" title="Build with nuxtjs"><img
@@ -200,7 +200,7 @@ const currentYear = computed(() => new Date().getFullYear())
 
       <ContentBlock class="mt-32" anchor="build-with-nuxthublanding" alignment="center">
         <template #term>
-          Build with NuxtHubLanding
+          Build with <strong>#NuxtHubLanding</strong>
         </template>
 
         <template #headline>
