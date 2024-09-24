@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import {$fetch} from "ofetch";
+import Card from "~/components/ui/cards/Card.vue";
+import TestimonialCard from "~/components/ui/cards/TestimonialCard.vue";
 
 const email = ref('')
 const success = ref(false)
@@ -40,6 +42,8 @@ useHead({
     class: 'bg-zinc-50 dark:bg-black'
   }
 })
+
+const currentYear = computed(() => new Date().getFullYear())
 </script>
 <template>
   <div>
@@ -132,71 +136,38 @@ useHead({
         <p class="text-zinc-400">Verify your idea before jumping into implementation — it saves time and gray hairs.</p>
 
         <div class="mt-8 grid grid-cols-3 gap-5">
-          <div
-              class="relative h-full w-full rounded-xl bg-zinc-900">
-            <div
-                class=" h-full w-full  overflow-hidden p-6 py-8 sm:p-4 lg:p-6">
-              <div class="bg-zinc-700 size-12 flex items-center justify-center rounded-full relative">
-                <div
-                    class="size-8 bg-zinc-600 flex items-center justify-center rounded-full mx-auto text-[#C33E59] absolute isolate">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                       stroke="currentColor" class="size-5">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                          d="M6 13.5V3.75m0 9.75a1.5 1.5 0 0 1 0 3m0-3a1.5 1.5 0 0 0 0 3m0 3.75V16.5m12-3V3.75m0 9.75a1.5 1.5 0 0 1 0 3m0-3a1.5 1.5 0 0 0 0 3m0 3.75V16.5m-6-9V3.75m0 3.75a1.5 1.5 0 0 1 0 3m0-3a1.5 1.5 0 0 0 0 3m0 9.75V10.5"/>
-                  </svg>
-                </div>
-              </div>
-              <div class="mt-3 gap-x-6">
-                <h3 class="text-white font-semibold text-lg">Customizable</h3>
-                <p class="text-sm/6 text-gray-300">It's your code, you can adjust it specific to your needs.</p>
-              </div>
-            </div>
-          </div>
+          <Card headline="Customizable" description="It's your code, you can adjust it specific to your needs.">
+            <template #icon>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                   stroke="currentColor" class="size-5">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M6 13.5V3.75m0 9.75a1.5 1.5 0 0 1 0 3m0-3a1.5 1.5 0 0 0 0 3m0 3.75V16.5m12-3V3.75m0 9.75a1.5 1.5 0 0 1 0 3m0-3a1.5 1.5 0 0 0 0 3m0 3.75V16.5m-6-9V3.75m0 3.75a1.5 1.5 0 0 1 0 3m0-3a1.5 1.5 0 0 0 0 3m0 9.75V10.5"/>
+              </svg>
+            </template>
+          </Card>
 
-          <div
-              class="relative h-full w-full rounded-xl bg-zinc-900">
-            <div
-                class=" h-full w-full  overflow-hidden p-6 py-8 sm:p-4 lg:p-6">
-              <div class="bg-zinc-700 size-12 flex items-center justify-center rounded-full relative">
-                <div
-                    class="size-8 bg-zinc-600 flex items-center justify-center rounded-full mx-auto text-[#C33E59] absolute isolate">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                       stroke="currentColor" class="size-5">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                          d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"/>
-                  </svg>
+          <Card headline="SEO" description="SEO always sucks, we added all necessary SEO tags so you dont have
+          to. Replace them with yours.">
+            <template #icon>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                   stroke="currentColor" class="size-5">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                      d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"/>
+              </svg>
+            </template>
+          </Card>
 
-                </div>
-              </div>
-              <div class="mt-3 gap-x-6">
-                <h3 class="text-white font-semibold text-lg">SEO</h3>
-                <p class="text-sm/6 text-gray-300">SEO always sucks, we added all necessary SEO tags so you dont have
-                  to. Replace them with yours.</p>
-              </div>
-            </div>
-          </div>
 
-          <div
-              class="relative h-full w-full rounded-xl bg-zinc-900">
-            <div
-                class=" h-full w-full  overflow-hidden p-6 py-8 sm:p-4 lg:p-6">
-              <div class="bg-zinc-700 size-12 flex items-center justify-center rounded-full relative">
-                <div
-                    class="size-8 bg-zinc-600 flex items-center justify-center rounded-full mx-auto text-[#C33E59] absolute isolate">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                       stroke="currentColor" class="size-5">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                          d="M15.59 14.37a6 6 0 0 1-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 0 0 6.16-12.12A14.98 14.98 0 0 0 9.631 8.41m5.96 5.96a14.926 14.926 0 0 1-5.841 2.58m-.119-8.54a6 6 0 0 0-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 0 0-2.58 5.84m2.699 2.7c-.103.021-.207.041-.311.06a15.09 15.09 0 0 1-2.448-2.448 14.9 14.9 0 0 1 .06-.312m-2.24 2.39a4.493 4.493 0 0 0-1.757 4.306 4.493 4.493 0 0 0 4.306-1.758M16.5 9a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z"/>
-                  </svg>
-                </div>
-              </div>
-              <div class="mt-3 gap-x-6">
-                <h3 class="text-white font-semibold text-lg">Deploy</h3>
-                <p class="text-sm/6 text-gray-300">Deploy your landing page in minutes, collect emails to verify your
-                  idea.</p>
-              </div>
-            </div>
-          </div>
+          <Card headline="Deploy" description="Deploy your landing page in minutes, collect emails to verify your
+                  idea.">
+            <template #icon>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                   stroke="currentColor" class="size-5">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M15.59 14.37a6 6 0 0 1-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 0 0 6.16-12.12A14.98 14.98 0 0 0 9.631 8.41m5.96 5.96a14.926 14.926 0 0 1-5.841 2.58m-.119-8.54a6 6 0 0 0-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 0 0-2.58 5.84m2.699 2.7c-.103.021-.207.041-.311.06a15.09 15.09 0 0 1-2.448-2.448 14.9 14.9 0 0 1 .06-.312m-2.24 2.39a4.493 4.493 0 0 0-1.757 4.306 4.493 4.493 0 0 0 4.306-1.758M16.5 9a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z"/>
+              </svg>
+            </template>
+          </Card>
         </div>
       </div>
 
@@ -206,9 +177,9 @@ useHead({
           Pricing
         </NuxtLink>
         <h2 class="text-white text-xl mt-2">Sometimes all you need is a little push...</h2>
-        <p class="text-zinc-400">We truly believe there a big ideas around, but sometimes the missing piece is a starting point.</p>
+        <p class="text-zinc-400">We truly believe there a big ideas around, but sometimes the missing piece is a
+          starting point.</p>
         <p class="text-zinc-400">Our template is free to use, we'd love to read from you on <a href="">x.com</a>.</p>
-
       </div>
 
       <div class="text-center mt-20" id="testimonials">
@@ -218,8 +189,23 @@ useHead({
         <h2 class="text-white text-xl mt-2">Focus on the part that matters...</h2>
         <p class="text-zinc-400">It's free</p>
         <p class="text-zinc-400">It's free</p>
+
+        <div class="text-left mt-8 grid grid-cols-3 gap-5">
+          <TestimonialCard name="evoize.me" description="" :author="{fullName: 'Josef F.', role: 'CTO', avatar: ''}"/>
+          <TestimonialCard name="suddy.me"
+                           description="I had this idea of a surf app, but is there a need? Didnt know, in 50 minutes i had a landing page to collect potential users."
+                           :author="{fullName: 'Tobias L.', role: 'Founder', avatar: ''}"/>
+          <TestimonialCard name="nuxt-hub-landing.com" description=""
+                           :author="{fullName: 'Tobias L.', role: 'Founder', avatar: ''}"/>
+        </div>
       </div>
 
     </div>
   </div>
+
+  <footer class="mt-64 bg-zinc-900">
+    <div class="max-w-6xl mx-auto text-zinc-500 py-3">
+      <a href="" class="text-[#D65320]">© {{ currentYear }} NuxtHubLanding</a>
+    </div>
+  </footer>
 </template>
