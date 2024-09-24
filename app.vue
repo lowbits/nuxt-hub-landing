@@ -11,7 +11,7 @@ const joinWaitlist = async () => {
   errors.value = []
 
   try {
-    const response = await $fetch('api/join-waitlist', {
+    await $fetch('api/join-waitlist', {
       method: 'POST', body: {
         email: email.value,
       }
@@ -24,7 +24,8 @@ const joinWaitlist = async () => {
       success.value = false
     }, 5000)
   } catch (e) {
-    console.log(e.data)
+
+
     switch (e.response.status) {
       case 400: {
         errors.value = e.data.data.issues
@@ -57,13 +58,11 @@ useHead({
             in minutes</h1>
 
           <p class="mt-4 text-sm/6 text-gray-300">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi aspernatur esse inventore, non provident
-            quos
-            sed tempore temporibus unde vitae. Aliquam atque doloribus libero perferendis saepe tempora voluptatem
-            voluptates voluptatum.
+            Save time using the <strong>NuxtHub-Landing template</strong>, to verify your ideas. Deploy it for
+            free on NuxtHub, collect leads for your next big thing.
           </p>
 
-
+          <p class="text-white font-semibold text-sm mt-2">Clone it, customize it, commercialize it.</p>
           <div class="mt-20">
             <form class="relative max-w-md overflow-hidden" @submit.prevent="joinWaitlist">
               <div>
@@ -104,17 +103,23 @@ useHead({
         </div>
 
         <div class="mt-32 relative">
-        <span class="absolute -top-10 -left-2 px-1.5 py-1 text-xs bg-[#D65320] bg-opacity-80 text-gray-300">
-          🪛 Build with
-        </span>
-          <div class="w-[100px] space-y-5">
-            <a href="https://nuxt.com/" target="_blank" rel="noreferrer" title="Build with nuxtjs"><img
+          <p class="absolute -top-10 -left-2 px-1.5 py-1 text-xs  text-gray-300">
+            🪛 Build with
+          </p>
+          <ul class="w-[100px] space-y-5">
+            <li><a href="https://nuxt.com/" target="_blank" rel="noreferrer" title="Build with nuxtjs"><img
                 src="~/assets/logos/nuxt-logo-white.svg" alt="Nuxtjs Logo"></a>
-            <img src="~/assets/logos/tailwindcss-logo-white.svg" alt="Tailwindcss Logo">
-            <img src="~/assets/logos/resend-logo-white.svg" alt="Resend Logo">
-            <img src="~/assets/logos/vuemail-logo-dark.png" alt="Vuemail Logo">
-            <img src="~/assets/logos/nuxt-hub-logo-white.svg" alt="Nuxthub Logo">
-          </div>
+            </li>
+
+            <li><a href="https://tailwindcss.com/" target="_blank" rel="noreferrer" title="Build with tailwindcss"><img
+                src="~/assets/logos/tailwindcss-logo-white.svg" alt="Tailwindcss Logo"></a>
+            </li>
+
+            <li><a href="https://hub.nuxt.com/" target="_blank" rel="noreferrer" title="Build with nuxt hub"><img
+                src="~/assets/logos/nuxt-hub-logo-white.svg" alt="Nuxthub Logo"></a>
+            </li>
+
+          </ul>
         </div>
       </div>
 
@@ -124,46 +129,75 @@ useHead({
           Features
         </NuxtLink>
         <h2 class="text-white text-xl mt-2">Focus on the part that matters...</h2>
-        <p class="text-zinc-400">A curated list</p>
+        <p class="text-zinc-400">Verify your idea before jumping into implementation — it saves time and gray hairs.</p>
 
-        <div class="mt-8 flex gap-5">
-
-
+        <div class="mt-8 grid grid-cols-3 gap-5">
           <div
-              class="relative h-full w-full rounded-xl bg-white shadow-[0px_0px_0px_1px_rgba(9,9,11,0.07),0px_2px_2px_0px_rgba(9,9,11,0.05)] dark:bg-zinc-900 dark:shadow-[0px_0px_0px_1px_rgba(255,255,255,0.1)] dark:before:pointer-events-none dark:before:absolute dark:before:-inset-px dark:before:rounded-xl dark:before:shadow-[0px_2px_8px_0px_rgba(0,_0,_0,_0.20),_0px_1px_0px_0px_rgba(255,_255,_255,_0.06)_inset] forced-colors:outline">
-
+              class="relative h-full w-full rounded-xl bg-zinc-900">
             <div
-                class="grid h-full w-full justify-items-center overflow-hidden place-items-center p-6 py-8 sm:p-8 lg:p-12">
-              <div class="flex gap-x-6">
-                here
+                class=" h-full w-full  overflow-hidden p-6 py-8 sm:p-4 lg:p-6">
+              <div class="bg-zinc-700 size-12 flex items-center justify-center rounded-full relative">
+                <div
+                    class="size-8 bg-zinc-600 flex items-center justify-center rounded-full mx-auto text-[#C33E59] absolute isolate">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                       stroke="currentColor" class="size-5">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                          d="M6 13.5V3.75m0 9.75a1.5 1.5 0 0 1 0 3m0-3a1.5 1.5 0 0 0 0 3m0 3.75V16.5m12-3V3.75m0 9.75a1.5 1.5 0 0 1 0 3m0-3a1.5 1.5 0 0 0 0 3m0 3.75V16.5m-6-9V3.75m0 3.75a1.5 1.5 0 0 1 0 3m0-3a1.5 1.5 0 0 0 0 3m0 9.75V10.5"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="mt-3 gap-x-6">
+                <h3 class="text-white font-semibold text-lg">Customizable</h3>
+                <p class="text-sm/6 text-gray-300">It's your code, you can adjust it specific to your needs.</p>
               </div>
             </div>
           </div>
 
           <div
-              class="relative h-full w-full rounded-xl bg-white shadow-[0px_0px_0px_1px_rgba(9,9,11,0.07),0px_2px_2px_0px_rgba(9,9,11,0.05)] dark:bg-zinc-900 dark:shadow-[0px_0px_0px_1px_rgba(255,255,255,0.1)] dark:before:pointer-events-none dark:before:absolute dark:before:-inset-px dark:before:rounded-xl dark:before:shadow-[0px_2px_8px_0px_rgba(0,_0,_0,_0.20),_0px_1px_0px_0px_rgba(255,_255,_255,_0.06)_inset] forced-colors:outline">
-
+              class="relative h-full w-full rounded-xl bg-zinc-900">
             <div
-                class="grid h-full w-full justify-items-center overflow-hidden place-items-center p-6 py-8 sm:p-8 lg:p-12">
-              <div class="flex gap-x-6">
-                here
+                class=" h-full w-full  overflow-hidden p-6 py-8 sm:p-4 lg:p-6">
+              <div class="bg-zinc-700 size-12 flex items-center justify-center rounded-full relative">
+                <div
+                    class="size-8 bg-zinc-600 flex items-center justify-center rounded-full mx-auto text-[#C33E59] absolute isolate">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                       stroke="currentColor" class="size-5">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                          d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"/>
+                  </svg>
+
+                </div>
+              </div>
+              <div class="mt-3 gap-x-6">
+                <h3 class="text-white font-semibold text-lg">SEO</h3>
+                <p class="text-sm/6 text-gray-300">SEO always sucks, we added all necessary SEO tags so you dont have
+                  to. Replace them with yours.</p>
               </div>
             </div>
           </div>
 
           <div
-              class="relative h-full w-full rounded-xl bg-white shadow-[0px_0px_0px_1px_rgba(9,9,11,0.07),0px_2px_2px_0px_rgba(9,9,11,0.05)] dark:bg-zinc-900 dark:shadow-[0px_0px_0px_1px_rgba(255,255,255,0.1)] dark:before:pointer-events-none dark:before:absolute dark:before:-inset-px dark:before:rounded-xl dark:before:shadow-[0px_2px_8px_0px_rgba(0,_0,_0,_0.20),_0px_1px_0px_0px_rgba(255,_255,_255,_0.06)_inset] forced-colors:outline">
-
+              class="relative h-full w-full rounded-xl bg-zinc-900">
             <div
-                class="grid h-full w-full justify-items-center overflow-hidden place-items-center p-6 py-8 sm:p-8 lg:p-12">
-              <div class="flex gap-x-6">
-                here
+                class=" h-full w-full  overflow-hidden p-6 py-8 sm:p-4 lg:p-6">
+              <div class="bg-zinc-700 size-12 flex items-center justify-center rounded-full relative">
+                <div
+                    class="size-8 bg-zinc-600 flex items-center justify-center rounded-full mx-auto text-[#C33E59] absolute isolate">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                       stroke="currentColor" class="size-5">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                          d="M15.59 14.37a6 6 0 0 1-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 0 0 6.16-12.12A14.98 14.98 0 0 0 9.631 8.41m5.96 5.96a14.926 14.926 0 0 1-5.841 2.58m-.119-8.54a6 6 0 0 0-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 0 0-2.58 5.84m2.699 2.7c-.103.021-.207.041-.311.06a15.09 15.09 0 0 1-2.448-2.448 14.9 14.9 0 0 1 .06-.312m-2.24 2.39a4.493 4.493 0 0 0-1.757 4.306 4.493 4.493 0 0 0 4.306-1.758M16.5 9a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="mt-3 gap-x-6">
+                <h3 class="text-white font-semibold text-lg">Deploy</h3>
+                <p class="text-sm/6 text-gray-300">Deploy your landing page in minutes, collect emails to verify your
+                  idea.</p>
               </div>
             </div>
           </div>
-
         </div>
-
       </div>
 
 
@@ -171,9 +205,10 @@ useHead({
         <NuxtLink class="flex items-center gap-2 justify-between text-[#D65320] font-semibold text-sm" to="#features">
           Pricing
         </NuxtLink>
-        <h2 class="text-white text-xl mt-2">Focus on the part that matters...</h2>
-        <p class="text-zinc-400">It's free</p>
-        <p class="text-zinc-400">It's free</p>
+        <h2 class="text-white text-xl mt-2">Sometimes all you need is a little push...</h2>
+        <p class="text-zinc-400">We truly believe there a big ideas around, but sometimes the missing piece is a starting point.</p>
+        <p class="text-zinc-400">Our template is free to use, we'd love to read from you on <a href="">x.com</a>.</p>
+
       </div>
 
       <div class="text-center mt-20" id="testimonials">
