@@ -1,23 +1,21 @@
-# Nuxt 3 Minimal Starter
+# NuxtHubLanding - Landing Page Boilerplate
+The Nuxt boilerplate for building yor landing page in minutes, while deploy it with NuxtHub.
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+> Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+
+
+## Prerequisites
+- [NuxtHub](https://hub.nuxt.com/) Account
 
 ## Setup
 
-Make sure to install the dependencies:
-
 ```bash
+# clone repository
+git clone https://github.com/lowbits/nuxt-hub-landing.git [YOUR_APP_NAME]
+cd [YOUR_APP_NAME]
+
 # npm
 npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
 ```
 
 ## Development Server
@@ -27,49 +25,27 @@ Start the development server on `http://localhost:3000`:
 ```bash
 # npm
 npm run dev
-
-# pnpm
-pnpm run dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
 ```
 
-## Production
+## Deploy
 
-Build the application for production:
+Deploy the application to NuxtHub
 
 ```bash
-# npm
-npm run build
+npx nuxthub deploy
 
-# pnpm
-pnpm run build
-
-# yarn
-yarn build
-
-# bun
-bun run build
+# Choose
+# Deploy <link> to NuxtHub?: Yes
+# Select a project: Create a new project
+# Project name: [YOUR_APP_NAME]
+# Select a region for the storage: [YOUR_REGION]
+# Production branch: main
 ```
 
-Locally preview production build:
+> Run the migrations
 
 ```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
+npx nuxt dev --production
 ```
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+Check out the [deployment documentation](https://hub.nuxt.com/docs/getting-started/deploy) for more information.
