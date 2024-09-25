@@ -15,6 +15,13 @@
       "when": 1727187012751,
       "tag": "0001_illegal_lenny_balinger",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1727279869048,
+      "tag": "0002_curious_brood",
+      "breakpoints": true
     }
   ]
 }

@@ -11,21 +11,11 @@ export default defineNuxtConfig({
         'nuxt-resend',
     ],
 
-    components: {
-        dirs: [
-            '~/components',
-            {
-                path: '~/emails',
-                extensions: ['vue'],
-            },
-        ],
-    },
-
     routeRules: {
         '/api/join-waitlist': {
             security: {
                 rateLimiter: {
-                    tokensPerInterval: 1
+                    tokensPerInterval: 3
                 }
             }
         }
