@@ -9,7 +9,7 @@ defineProps<{
       class="relative rounded-xl bg-zinc-900">
     <div
         class="flex h-full flex-col justify-evenly p-6 py-8 sm:p-4 lg:p-6">
-      <div v-if="$slots.icon" class="bg-zinc-700 size-12 flex items-center justify-center rounded-full relative">
+      <div v-if="$slots.icon" class="bg-zinc-700 size-12 flex items-center justify-center rounded-full relative isolate">
         <div
             class="size-8 bg-zinc-600 flex items-center justify-center rounded-full mx-auto text-[#C33E59] absolute isolate">
           <slot name="icon"/>
@@ -22,7 +22,7 @@ defineProps<{
           }}</p>
       </div>
       <footer v-if="$slots.footer" class="border-t border-zinc-800 pt-4 mt-3">
-        <slot name="footer" />
+        <slot name="footer"/>
       </footer>
     </div>
   </div>
