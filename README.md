@@ -65,6 +65,9 @@ Check out the [deployment documentation](https://hub.nuxt.com/docs/getting-start
 - [ ] Add rate limiting via [NuxtSecurity](https://nuxt-security.vercel.app/documentation/middleware/rate-limiter)
 - [ ] Add Double-Opt-in
 - [ ] Add more basic components
+  - [ ] Faq-Area
+  - [ ] Pricing-Area
 - [ ] Add ability of customisation via config
+- [ ] Add light mode
 
 
