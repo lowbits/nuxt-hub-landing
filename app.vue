@@ -3,8 +3,10 @@ import {$fetch} from "ofetch";
 import Card from "~/components/ui/cards/Card.vue";
 import TestimonialCard from "~/components/ui/cards/TestimonialCard.vue";
 import ContentBlock from "~/components/ui/content/ContentBlock.vue";
+import Button from "~/components/ui/buttons/Button.vue";
 
 const email = ref('')
+const joiningWaitlist = ref(false)
 const success = ref(false)
 const errors = ref<{ code: string, message: string, path: string [], validation: string }[]>([])
 
@@ -26,6 +28,7 @@ useSeoMeta({
 })
 
 const joinWaitlist = async () => {
+  joiningWaitlist.value = true
   errors.value = []
 
   try {
@@ -50,6 +53,8 @@ const joinWaitlist = async () => {
         break;
       }
     }
+  } finally {
+    joiningWaitlist.value = false
   }
 }
 
@@ -94,22 +99,22 @@ const currentYear = computed(() => new Date().getFullYear())
                       class="px-2 md:px-4 py-1 md:py-2 flex-1 bg-transparent text-white transition-colors hover:bg-zinc-900 ease-linear duration-300  rounded"
                       v-model="email" id="email" required
                       type="text" placeholder="E-Mail Address"/>
-                  <button
-                      class="bg-[#C33E59] border border-[#C33E59] text-sm whitespace-nowrap md:text-base text-white hover:bg-opacity-80 ease-in-out transition-colors rounded-lg px-3 py-1"
+                  <Button
+                      :loading="joiningWaitlist"
                       type="submit">Join
                     Waitlist
-                  </button>
+                  </Button>
                 </div>
                 <p class="text-base/6 text-red-500 data-[disabled]:opacity-50 sm:text-sm/6"
                    v-for="error in errors">{{ error.path.join(',') }}: {{ error.message }}</p>
               </div>
 
               <Transition
-                  enter-from-class="opacity-0"
+                  enter-from-class="opacity-0 translate-y-full"
                   enter-active-class="transition ease-in-out duration-150"
-                  enter-to-class="opacity-100"
-                  leave-from-class="opacity-100"
-                  leave-active-class="transition ease-out duration-150"
+                  enter-to-class="opacity-100 translate-y-0"
+                  leave-from-class="opacity-100 translate-y-0"
+                  leave-active-class="transition -translate-y-full ease-out duration-150"
                   leave-to-class="opacity-0"
               >
                 <div v-if="success"
