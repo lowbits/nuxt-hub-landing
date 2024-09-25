@@ -9,8 +9,6 @@ function generateSecureToken(email: string) {
 
 
 function compareToken(email, token) {
-
-    console.log(generateSecureToken(email, token), token)
     return generateSecureToken(email, token) === token
 }
 
