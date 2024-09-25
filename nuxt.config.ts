@@ -5,9 +5,10 @@ export default defineNuxtConfig({
     compatibilityDate: '2024-04-03',
     devtools: {enabled: true},
     modules: [
-      '@nuxthub/core',
-      '@nuxtjs/tailwindcss',
-      'nuxt-resend',
+        '@nuxthub/core',
+        '@nuxtjs/tailwindcss',
+        'nuxt-security',
+        'nuxt-resend',
     ],
 
     components: {
@@ -20,6 +21,15 @@ export default defineNuxtConfig({
         ],
     },
 
+    routeRules: {
+        '/api/join-waitlist': {
+            security: {
+                rateLimiter: {
+                    tokensPerInterval: 1
+                }
+            }
+        }
+    },
 
     hub: {
         database: true

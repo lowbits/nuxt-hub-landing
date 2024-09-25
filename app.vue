@@ -3,8 +3,10 @@ import {$fetch} from "ofetch";
 import Card from "~/components/ui/cards/Card.vue";
 import TestimonialCard from "~/components/ui/cards/TestimonialCard.vue";
 import ContentBlock from "~/components/ui/content/ContentBlock.vue";
+import Button from "~/components/ui/buttons/Button.vue";
 
 const email = ref('')
+const joiningWaitlist = ref(false)
 const success = ref(false)
 const errors = ref<{ code: string, message: string, path: string [], validation: string }[]>([])
 
@@ -26,6 +28,7 @@ useSeoMeta({
 })
 
 const joinWaitlist = async () => {
+  joiningWaitlist.value = true
   errors.value = []
 
   try {
@@ -49,7 +52,13 @@ const joinWaitlist = async () => {
         errors.value = e.data.data.issues
         break;
       }
+      case 429: {
+        errors.value = [{path: ['server'], message: 'You’ve made too many requests in a short period. Please wait a moment and try again.'}]
+        break;
+      }
     }
+  } finally {
+    joiningWaitlist.value = false
   }
 }
 
@@ -57,6 +66,15 @@ const currentYear = computed(() => new Date().getFullYear())
 </script>
 <template>
   <div class="px-6 xl:px-0">
+    <header class="sticky top-0">
+      <nav class="flex justify-end max-w-6xl mx-auto py-2">
+        <div>
+          <a href="https://github.com/lowbits/nuxt-hub-landing" target="_blank" rel="noreferrer"><img
+              class="size-5"
+              src="/assets/logos/github-mark-white.svg" alt="Github Logo"></a>
+        </div>
+      </nav>
+    </header>
     <div class="mt-20 max-w-6xl mx-auto">
       <div class="flex flex-col md:flex-row md:justify-between">
         <div class="max-w-lg">
@@ -85,22 +103,22 @@ const currentYear = computed(() => new Date().getFullYear())
                       class="px-2 md:px-4 py-1 md:py-2 flex-1 bg-transparent text-white transition-colors hover:bg-zinc-900 ease-linear duration-300  rounded"
                       v-model="email" id="email" required
                       type="text" placeholder="E-Mail Address"/>
-                  <button
-                      class="bg-[#C33E59] border border-[#C33E59] text-sm whitespace-nowrap md:text-base text-white hover:bg-opacity-80 ease-in-out transition-colors rounded-lg px-3 py-1"
+                  <Button
+                      :loading="joiningWaitlist"
                       type="submit">Join
                     Waitlist
-                  </button>
+                  </Button>
                 </div>
                 <p class="text-base/6 text-red-500 data-[disabled]:opacity-50 sm:text-sm/6"
                    v-for="error in errors">{{ error.path.join(',') }}: {{ error.message }}</p>
               </div>
 
               <Transition
-                  enter-from-class="opacity-0"
+                  enter-from-class="opacity-0 translate-y-full"
                   enter-active-class="transition ease-in-out duration-150"
-                  enter-to-class="opacity-100"
-                  leave-from-class="opacity-100"
-                  leave-active-class="transition ease-out duration-150"
+                  enter-to-class="opacity-100 translate-y-0"
+                  leave-from-class="opacity-100 translate-y-0"
+                  leave-active-class="transition -translate-y-full ease-out duration-150"
                   leave-to-class="opacity-0"
               >
                 <div v-if="success"
