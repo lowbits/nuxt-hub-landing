@@ -69,7 +69,8 @@ const currentYear = computed(() => new Date().getFullYear())
             in minutes</h1>
 
           <p class="mt-4 text-sm/6 text-gray-300">
-            Save time using the <strong class="text-[#D65320]">#NuxtHubLanding</strong> boilerplate, to verify your ideas. Deploy it for
+            Save time using the <strong class="text-[#D65320]">#NuxtHubLanding</strong> boilerplate, to verify your
+            ideas. Deploy it for
             free on NuxtHub, collect leads for your next big thing.
           </p>
 

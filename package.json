@@ -13,6 +13,9 @@
   "dependencies": {
     "@nuxthub/core": "^0.7.12",
     "@nuxtjs/tailwindcss": "^6.12.1",
+    "@vitejs/plugin-vue": "^5.1.4",
+    "@vue-email/components": "^0.0.19",
+    "@vue-email/render": "^0.0.9",
     "drizzle-orm": "^0.33.0",
     "h3-zod": "^0.5.3",
     "nuxt": "^3.13.0",
@@ -22,6 +25,7 @@
   },
   "devDependencies": {
     "drizzle-kit": "^0.24.2",
+    "nuxt-resend": "^0.0.2",
     "wrangler": "^3.76.0"
   }
 }
