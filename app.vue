@@ -57,6 +57,15 @@ const currentYear = computed(() => new Date().getFullYear())
 </script>
 <template>
   <div class="px-6 xl:px-0">
+    <header class="sticky top-0">
+      <nav class="flex justify-end max-w-6xl mx-auto py-2">
+        <div>
+          <a href="https://github.com/lowbits/nuxt-hub-landing" target="_blank" rel="noreferrer"><img
+              class="size-5"
+              src="/assets/logos/github-mark-white.svg" alt="Github Logo"></a>
+        </div>
+      </nav>
+    </header>
     <div class="mt-20 max-w-6xl mx-auto">
       <div class="flex flex-col md:flex-row md:justify-between">
         <div class="max-w-lg">
@@ -69,7 +78,8 @@ const currentYear = computed(() => new Date().getFullYear())
             in minutes</h1>
 
           <p class="mt-4 text-sm/6 text-gray-300">
-            Save time using the <strong class="text-[#D65320]">#NuxtHubLanding</strong> boilerplate, to verify your ideas. Deploy it for
+            Save time using the <strong class="text-[#D65320]">#NuxtHubLanding</strong> boilerplate, to verify your
+            ideas. Deploy it for
             free on NuxtHub, collect leads for your next big thing.
           </p>
 
