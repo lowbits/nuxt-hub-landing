@@ -48,6 +48,7 @@ This feature enables email verification through a double opt-in process using Re
 Add the following to your `.env` file:
 ```
 NUXT_RESEND_API_KEY=your_resend_api_key_here
+SECRET_KEY=your_secure_secret_key_here  # Used for generating verification URLs
 ```
 
 #### Nuxt Config
