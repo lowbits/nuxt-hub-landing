@@ -37,6 +37,38 @@ Start the development server on `http://localhost:3000`:
 npm run dev
 ```
 
+## Double Opt-in Email Verification
+
+### Overview
+This feature enables email verification through a double opt-in process using Resend as the email service provider.
+
+### Configuration
+
+#### Environment Variables
+Add the following to your `.env` file:
+```
+NUXT_RESEND_API_KEY=your_resend_api_key_here
+```
+
+#### Nuxt Config
+Enable email verification in your `nuxt.config.ts`:
+
+```ts
+export default defineNuxtConfig({
+  nuxtHubLanding: {
+    verifyEmail: true,
+    email: 'your_resend_email@domain.com'
+  }
+})
+```
+
+#### Provider
+Currently using [Resend](https://resend.com) as the email service provider. You'll need to:
+1. Create a Resend account
+2. Generate an API key
+3. Verify your sending domain
+
+
 ## Deploy
 
 Deploy the application to NuxtHub
@@ -63,7 +95,7 @@ Check out the [deployment documentation](https://hub.nuxt.com/docs/getting-start
 
 ## Roadmap
 - [X] Add rate limiting via [NuxtSecurity](https://nuxt-security.vercel.app/documentation/middleware/rate-limiter)
-- [ ] Add Double-Opt-in
+- [X] Add Double-Opt-in
 - [ ] Add [NuxtSeo](https://nuxtseo.com/nuxt-seo/getting-started/what-is-nuxt-seo) module
 - [ ] Add more basic components
     - [ ] Faq-Area
