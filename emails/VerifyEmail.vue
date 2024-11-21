@@ -15,10 +15,7 @@ import {
 } from '@vue-email/components'
 
 
-withDefaults(defineProps<{ email: string, appName: string, link: string }>(), {
-  email: 'test@app.de',
-  appName: 'NuxtHubLanding'
-})
+defineProps<{ email: string, appName: string, link: string }>()
 </script>
 
 <template>

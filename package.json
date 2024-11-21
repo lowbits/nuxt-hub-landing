@@ -16,6 +16,7 @@
     "@vitejs/plugin-vue": "^5.1.4",
     "@vue-email/components": "^0.0.19",
     "@vue-email/render": "^0.0.9",
+    "defu": "^6.1.4",
     "drizzle-orm": "^0.33.0",
     "h3-zod": "^0.5.3",
     "nuxt": "^3.13.0",

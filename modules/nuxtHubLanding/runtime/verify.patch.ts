@@ -1,9 +1,9 @@
 import {useDrizzle} from "~/server/utils/drizzle";
-import {consola} from "consola";
 import {useValidatedBody, z} from "h3-zod";
 import {waitlist} from "~/server/database/schema";
 import {compareToken} from "~/utlis/helpers";
-import {isNull, and} from "drizzle-orm";
+import {and, isNull} from "drizzle-orm";
+import {consola} from "consola";
 
 
 export default defineEventHandler(async event => {

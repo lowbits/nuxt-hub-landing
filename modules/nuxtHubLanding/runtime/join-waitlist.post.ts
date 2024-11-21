@@ -1,11 +1,11 @@
 import {useDrizzle} from "~/server/utils/drizzle";
-import {consola} from "consola";
 import {useValidatedBody, z} from "h3-zod";
 
 import {render} from "@vue-email/render";
 import VerifyTemplate from "~/emails/VerifyEmail.vue";
 import {generateSecureToken} from "~/utlis/helpers";
-import {waitlist} from "~/server/database/schema";
+import {consola} from "consola";
+import {getRequestURL} from "h3";
 
 
 export default defineEventHandler(async event => {
@@ -37,19 +37,31 @@ export default defineEventHandler(async event => {
 
     consola.info(`User ${entry.email} is now on waitlist...`)
 
-    console.debug("Sending email..")
+    const nuxtHubLandingConfig = useRuntimeConfig().nuxtHubLanding
 
 
-    await emails.send({
-        from: "NuxtHubLanding <hello@nhl.lowbits.de>",
-        to: 'hallo@tobiaslobitz.de',
-        subject: "Confirm your email on NuxtHubLanding",
+    const shouldSendVerifyEmail = nuxtHubLandingConfig?.verifyEmail
 
-        html: await render(VerifyTemplate, {
-            appName: 'NuxtHubLanding',
-            link: `http://localhost:3000/verify?email=${email}&token=${generateSecureToken(email)}`
-        }, {pretty: true})
-    })
+    if (shouldSendVerifyEmail) {
+        consola.info(`User ${entry.email} needs to verify email...`)
+
+        const appName = nuxtHubLandingConfig?.appName ?? process.env.NUXT_APPLICATION_NAME
+        const url = getRequestURL(event)
+
+        console.debug("Sending email..")
+        await emails.send({
+            from: `NuxtHubLanding <${nuxtHubLandingConfig.email}>`,
+            to: entry.email,
+            subject: `Confirm your email on ${appName}`,
+
+            html: await render(VerifyTemplate, {
+                email: entry.email,
+                appName: appName,
+                link: `${url.origin}/verify?email=${email}&token=${generateSecureToken(email)}`
+            }, {pretty: true})
+        })
+    }
+
 
     setResponseStatus(event, 201)
 })

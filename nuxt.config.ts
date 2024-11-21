@@ -11,6 +11,12 @@ export default defineNuxtConfig({
         'nuxt-resend',
     ],
 
+    nuxtHubLanding: {
+        email: process.env.NUXT_RESEND_EMAIL,
+        resendApiKey: process.env.NUXT_RESEND_API_KEY,
+        verifyEmail: true
+    },
+
     routeRules: {
         '/api/join-waitlist': {
             security: {

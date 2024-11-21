@@ -64,6 +64,7 @@ Check out the [deployment documentation](https://hub.nuxt.com/docs/getting-start
 ## Roadmap
 - [X] Add rate limiting via [NuxtSecurity](https://nuxt-security.vercel.app/documentation/middleware/rate-limiter)
 - [ ] Add Double-Opt-in
+- [ ] Add [NuxtSeo](https://nuxtseo.com/nuxt-seo/getting-started/what-is-nuxt-seo) module
 - [ ] Add more basic components
     - [ ] Faq-Area
     - [ ] Pricing-Area

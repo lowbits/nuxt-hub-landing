@@ -18,6 +18,8 @@ useSeoMeta({
 })
 
 const currentYear = computed(() => new Date().getFullYear())
+
+console.log(useRuntimeConfig().nuxtHubLanding)
 </script>
 <template>
   <div class="flex flex-col min-h-screen">
