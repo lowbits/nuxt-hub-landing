@@ -10,11 +10,14 @@ export default defineEventHandler(async event => {
     consola.info("User trying to verify email ...")
 
 
+
     const {email, token} = await useValidatedBody(event, z.object(
         {
             token: z.string(),
             email: z.string().email()
+                .transform(val => decodeURIComponent(val))
                 .refine(async (email) => {
+                    console.log("EMAIL TO CHECK", email)
                     const alreadyVerified = await useDrizzle().query.waitlist.findFirst({
                         where: and(
                             eq(waitlist.email, email),

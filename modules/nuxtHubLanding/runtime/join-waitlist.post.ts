@@ -3,9 +3,9 @@ import {useValidatedBody, z} from "h3-zod";
 
 import {render} from "@vue-email/render";
 import VerifyTemplate from "~/emails/VerifyEmail.vue";
-import {generateSecureToken} from "~/utlis/helpers";
 import {consola} from "consola";
 import {getRequestURL} from "h3";
+import {generateVerifyUrl} from "~/utlis/helpers";
 
 
 export default defineEventHandler(async event => {
@@ -25,15 +25,12 @@ export default defineEventHandler(async event => {
         }
     ))
 
-
     consola.info("User joining waitlist...")
-
 
     let entry = await useDrizzle().insert(tables.waitlist).values({
         email,
         createdAt: new Date(),
     }).returning().get()
-
 
     consola.info(`User ${entry.email} is now on waitlist...`)
 
@@ -48,16 +45,16 @@ export default defineEventHandler(async event => {
         const appName = nuxtHubLandingConfig?.appName ?? process.env.NUXT_APPLICATION_NAME
         const url = getRequestURL(event)
 
-        console.debug("Sending email..")
+        consola.debug("Sending email..")
+
         await emails.send({
             from: `NuxtHubLanding <${nuxtHubLandingConfig.email}>`,
             to: entry.email,
             subject: `Confirm your email on ${appName}`,
-
             html: await render(VerifyTemplate, {
                 email: entry.email,
                 appName: appName,
-                link: `${url.origin}/verify?email=${email}&token=${generateSecureToken(email)}`
+                link: generateVerifyUrl(url.origin, entry.email)
             }, {pretty: true})
         })
     }

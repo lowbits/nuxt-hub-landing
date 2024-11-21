@@ -16,17 +16,20 @@ export default defineNuxtModule<ModuleOptions>({
     },
     setup(options: ModuleOptions, nuxt: Nuxt) {
 
-        if (options.verifyEmail && (!options.email || !options.resendApiKey)) {
-            log.error('NuxtHubLanding needs an email-address and a resend-api-key.')
+        if (options.verifyEmail && (!options.email)) {
+            log.error('NuxtHubLanding needs an email address')
             log.info('Please set the parameters in config')
             return process.exit(1)
         }
+
+
         const {resolve} = createResolver(import.meta.url)
 
 
         nuxt.options.runtimeConfig.nuxtHubLanding = defu(
             nuxt.options.runtimeConfig.nuxtHubLanding,
             {
+                email: options.email,
                 verifyEmail: options.verifyEmail,
             },
         );
