@@ -13,7 +13,7 @@ function compareToken(email, token) {
 }
 
 function  generateVerifyUrl(origin: string, email: string)  {
-    const verifyUrl = new URL('/verify', url.origin);
+    const verifyUrl = new URL('/verify', origin);
     verifyUrl.searchParams.set('email', email);
     verifyUrl.searchParams.set('token', generateSecureToken(email));
 

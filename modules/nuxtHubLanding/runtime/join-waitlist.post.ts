@@ -34,26 +34,25 @@ export default defineEventHandler(async event => {
 
     consola.info(`User ${entry.email} is now on waitlist...`)
 
-    const nuxtHubLandingConfig = useRuntimeConfig().nuxtHubLanding
+    const config = useRuntimeConfig()
 
 
-    const shouldSendVerifyEmail = nuxtHubLandingConfig?.verifyEmail
-
-    if (shouldSendVerifyEmail) {
+    if (config.landing.verifyEmail) {
         consola.info(`User ${entry.email} needs to verify email...`)
 
-        const appName = nuxtHubLandingConfig?.appName ?? process.env.NUXT_APPLICATION_NAME
+
         const url = getRequestURL(event)
+        const appName = config.landing.appName
 
         consola.debug("Sending email..")
 
         await emails.send({
-            from: `NuxtHubLanding <${nuxtHubLandingConfig.email}>`,
+            from: `NuxtHubLanding <${config.landing.email}>`,
             to: entry.email,
             subject: `Confirm your email on ${appName}`,
             html: await render(VerifyTemplate, {
                 email: entry.email,
-                appName: appName,
+                appName,
                 link: generateVerifyUrl(url.origin, entry.email)
             }, {pretty: true})
         })

@@ -11,8 +11,7 @@ export default defineNuxtConfig({
         'nuxt-resend',
     ],
 
-    nuxtHubLanding: {
-        email: process.env.NUXT_RESEND_EMAIL,
+    landing: {
         verifyEmail: true
     },
 
