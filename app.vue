@@ -19,7 +19,11 @@ useSeoMeta({
 
 const currentYear = computed(() => new Date().getFullYear())
 
-console.log(useRuntimeConfig().nuxtHubLanding)
+/* TODO: REMOVE DEBUG LOG
+*
+* */
+console.log(process.env)
+/* ---------------------- */
 </script>
 <template>
   <div class="flex flex-col min-h-screen">
