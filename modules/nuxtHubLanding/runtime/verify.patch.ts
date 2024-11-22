@@ -8,7 +8,7 @@ import {consola} from "consola";
 
 export default defineEventHandler(async event => {
     consola.info("User trying to verify email ...")
-    
+
     const {email, token} = await useValidatedBody(event, z.object(
         {
             token: z.string(),
