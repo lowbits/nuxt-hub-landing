@@ -1,10 +1,10 @@
-import { createHmac } from 'node:crypto'
+import CryptoJS from 'crypto-js'
 
 
 function generateSecureToken(email: string) {
-    const hmac = createHmac('md5', process.env.SECRET_KEY)
+    const hmac = CryptoJS.HmacMD5(email, process.env.SECRET_KEY);
 
-    return hmac.update(email).digest('hex')
+    return hmac.toString(CryptoJS.enc.Hex)
 }
 
 
@@ -12,7 +12,7 @@ function compareToken(email, token) {
     return generateSecureToken(email, token) === token
 }
 
-function  generateVerifyUrl(origin: string, email: string)  {
+function generateVerifyUrl(origin: string, email: string) {
     const verifyUrl = new URL('/verify', origin);
     verifyUrl.searchParams.set('email', email);
     verifyUrl.searchParams.set('token', generateSecureToken(email));
