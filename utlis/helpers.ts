@@ -1,8 +1,8 @@
-import crypto from 'crypto'
+import { createHmac } from 'node:crypto'
 
 
 function generateSecureToken(email: string) {
-    const hmac = crypto.createHmac('md5', process.env.SECRET_KEY)
+    const hmac = createHmac('md5', process.env.SECRET_KEY)
 
     return hmac.update(email).digest('hex')
 }
