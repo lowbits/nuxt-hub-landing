@@ -34,6 +34,14 @@ export default defineNuxtModule<ModuleOptions>({
             },
         );
 
+
+        nuxt.options.runtimeConfig.resend = defu(
+            nuxt.options.runtimeConfig.resend,
+            {
+                apiKey: process.env.NUXT_RESEND_API_KEY,
+            },
+        );
+
         log.info("🛬 initializing nuxtHubLanding")
 
         addServerHandler({
