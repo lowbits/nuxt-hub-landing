@@ -46,6 +46,8 @@ export default defineEventHandler(async event => {
 
         consola.debug("Sending email..")
 
+        consola.info(`DEBUG`, config.landing)
+
         await emails.send({
             from: `NuxtHubLanding <${config.landing.email}>`,
             to: entry.email,

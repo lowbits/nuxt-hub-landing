@@ -2,7 +2,7 @@ import md5 from 'md5'
 
 
 function generateSecureToken(email: string) {
-    return md5(email + process.env.SECRET_KEY); 
+    return md5(email + process.env.SECRET_KEY);
 }
 
 
