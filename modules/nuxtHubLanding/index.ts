@@ -28,8 +28,8 @@ export default defineNuxtModule<ModuleOptions>({
         nuxt.options.runtimeConfig.landing = defu(
             nuxt.options.runtimeConfig.landing,
             {
-                appName: options.appName ?? process.env.NUXT_APPLICATION_NAME,
-                email: options.email,
+                appName: options.appName ?? process.env.NUXT_HUB_APPLICATION_NAME,
+                email: options.email ?? process.NUXT_HUB_LANDING_EMAIL,
                 verifyEmail: options.verifyEmail
             },
         );
