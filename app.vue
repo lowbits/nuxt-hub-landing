@@ -19,11 +19,7 @@ useSeoMeta({
 
 const currentYear = computed(() => new Date().getFullYear())
 
-/* TODO: REMOVE DEBUG LOG
-*
-* */
-console.log(process.env.NUXT_RESEND_API_KEY)
-/* ---------------------- */
+
 </script>
 <template>
   <div class="flex flex-col min-h-screen">
