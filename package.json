@@ -8,21 +8,32 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "db:generate": "drizzle-kit generate"
+    "db:generate": "drizzle-kit generate",
+    "generate:secret": "node scripts/secret.mjs"
   },
   "dependencies": {
-    "@nuxthub/core": "^0.7.12",
-    "@nuxtjs/tailwindcss": "^6.12.1",
-    "drizzle-orm": "^0.33.0",
+    "@nuxthub/core": "^0.8.7",
+    "@nuxtjs/tailwindcss": "^6.12.2",
+    "@types/md5": "^2.3.5",
+    "@vitejs/plugin-vue": "^5.2.0",
+    "@vue-email/components": "^0.0.21",
+    "@vue-email/render": "^0.0.9",
+    "defu": "^6.1.4",
+    "drizzle-orm": "^0.36.3",
     "h3-zod": "^0.5.3",
-    "nuxt": "^3.13.0",
-    "nuxt-security": "^2.0.0",
+    "md5": "^2.3.0",
+    "nuxt": "^3.14.1592",
+    "nuxt-security": "^2.1.2",
     "vue": "latest",
     "vue-router": "latest",
     "zod": "^3.23.8"
   },
   "devDependencies": {
-    "drizzle-kit": "^0.24.2",
+    "@types/node": "^22.9.1",
+    "drizzle-kit": "^0.28.1",
+    "nuxt-resend": "^0.0.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.6.3",
     "wrangler": "^3.76.0"
   }
 }

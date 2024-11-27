@@ -16,7 +16,9 @@ defineProps<{
   <Card :headline="name" :description="description">
     <template #footer>
       <div class="flex gap-4">
-        <div class="w-12 h-12 bg-zinc-700 rounded-full"></div>
+        <div class="w-12 h-12 bg-zinc-700 rounded-full overflow-hidden">
+          <img  :src="`${author.avatar}`"  alt=""/>
+        </div>
         <div class="text-zinc-300 text-base leading-5">
           <p class="font-semibold">{{ author.fullName }}</p>
           <p>{{ author.role }}</p>

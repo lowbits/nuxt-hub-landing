@@ -1,3 +1,5 @@
+import vue from '@vitejs/plugin-vue'
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
     compatibilityDate: '2024-04-03',
@@ -5,15 +7,19 @@ export default defineNuxtConfig({
     modules: [
         '@nuxthub/core',
         '@nuxtjs/tailwindcss',
-        'nuxt-security'
+        'nuxt-security',
+        'nuxt-resend',
     ],
 
+    landing: {
+        verifyEmail: true
+    },
 
     routeRules: {
         '/api/join-waitlist': {
             security: {
                 rateLimiter: {
-                    tokensPerInterval: 1
+                    tokensPerInterval: 3
                 }
             }
         }
@@ -21,5 +27,11 @@ export default defineNuxtConfig({
 
     hub: {
         database: true
-    }
+    },
+
+    nitro: {
+        rollupConfig: {
+            plugins: [vue()]
+        },
+    },
 })
