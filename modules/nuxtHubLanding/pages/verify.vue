@@ -15,7 +15,7 @@ const {data, error, status} = useFetch('/api/verify', {
 </script>
 
 <template>
-  <div class="bg-white flex justify-center">
+  <div class="flex justify-center">
 
     <div class="mt-40 text-center inline-flex flex-col items-center">
       <template v-if="status === 'success'">
@@ -29,7 +29,7 @@ const {data, error, status} = useFetch('/api/verify', {
         </div>
 
         <p class="mt-6 text-zinc-500 font-semibold text-sm leading-none">You're in!</p>
-        <p class="mt-2 text-xl font-semibold leading-5 ">
+        <p class="mt-2 text-zinc-500 text-xl font-semibold leading-5 ">
           Get ready for awesome updates in your inbox.
         </p>
       </template>
@@ -38,14 +38,14 @@ const {data, error, status} = useFetch('/api/verify', {
 
         <div>
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-               stroke="currentColor" class="fill text-yellow-500 size-20">
+               stroke="currentColor" class="fill text-yellow-500 w-20 h-20">
             <path stroke-linecap="round" stroke-linejoin="round"
                   d="M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 3.75h.008v.008H12v-.008Z"/>
           </svg>
 
         </div>
         <p class="mt-6 text-zinc-500 font-semibold text-sm leading-none">Something went wrong!</p>
-        <p class="mt-2 text-xl font-semibold leading-5 ">
+        <p class="mt-2 text-zinc-500 text-xl font-semibold leading-5 ">
           {{ error.data.data.issues.map((e) => e.message).join() }}
         </p>
       </template>

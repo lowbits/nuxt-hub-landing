@@ -5,6 +5,9 @@ import Button from "~/components/ui/buttons/Button.vue";
 import Card from "~/components/ui/cards/Card.vue";
 import {$fetch} from "ofetch";
 
+import authorAvatar from '@/assets/images/rlugo_profile_square.jpg'
+import authorAvatar2 from '@/assets/images/tobias-transformed.jpeg'
+
 
 const email = ref('')
 const joiningWaitlist = ref(false)
@@ -204,7 +207,7 @@ const joinWaitlist = async () => {
         </template>
       </ContentBlock>
 
-      <ContentBlock class="mt-32" anchor="build-with-nuxthublanding" alignment="center">
+      <ContentBlock class="mt-32 mb-32" anchor="build-with-nuxthublanding" alignment="center">
         <template #term>
           Build with <strong>#NuxtHubLanding</strong>
         </template>
@@ -223,10 +226,10 @@ const joinWaitlist = async () => {
                          :author="{fullName: 'Christian H.', role: 'CTO', avatar: ''}"/>
         <TestimonialCard name="cardict"
                          description="We focused on building our React Native app and needed a quick, cost-effective landing page solution. The NuxtHubLanding boilerplate let us launch a professional, responsive site in just two hours, saving us development time and making a strong first impression."
-                         :author="{fullName: 'Raul L.', role: 'Co-Founder', avatar: ''}"/>
+                         :author="{fullName: 'Raul L.', role: 'Co-Founder', avatar: authorAvatar}"/>
         <TestimonialCard name="suddy.me"
                          description="Plentiful App ideas, creating landing pages was time-consuming and expensive. This challenge led me to develop NuxtHubLanding, a quick and cost-effective solution for launching professional sites. It allows me to focus on building apps without worrying about landing page setup."
-                         :author="{fullName: 'Tobias L.', role: 'Founder', avatar: ''}"/>
+                         :author="{fullName: 'Tobias L.', role: 'Founder', avatar: authorAvatar2}"/>
 
 
       </ContentBlock>

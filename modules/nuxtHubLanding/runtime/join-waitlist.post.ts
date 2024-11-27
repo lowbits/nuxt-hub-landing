@@ -40,13 +40,10 @@ export default defineEventHandler(async event => {
     if (config.landing.verifyEmail) {
         consola.info(`User ${entry.email} needs to verify email...`)
 
-
         const url = getRequestURL(event)
         const appName = config.landing.appName
 
         consola.debug("Sending email..")
-
-        consola.info(`DEBUG`, config.landing)
 
         await emails.send({
             from: `NuxtHubLanding <${config.landing.email}>`,

@@ -1,4 +1,4 @@
-import {addServerHandler, createResolver, defineNuxtModule, logger, useRuntimeConfig} from 'nuxt/kit'
+import {addServerHandler, createResolver, defineNuxtModule, logger, extendPages} from 'nuxt/kit'
 import defu from "defu";
 
 
@@ -21,7 +21,7 @@ export default defineNuxtModule<ModuleOptions>({
         appName: undefined,
         verifyEmail: false,
     },
-    setup(options: ModuleOptions, nuxt: Nuxt) {
+    async setup(options: ModuleOptions, nuxt: Nuxt) {
         const {resolve} = createResolver(import.meta.url)
 
 
@@ -49,14 +49,28 @@ export default defineNuxtModule<ModuleOptions>({
             handler: resolve('./runtime/join-waitlist.post')
         })
 
+
+
         if (options.verifyEmail) {
             log.info("💌 verify email is turned on")
+
+            nuxt.hook('tailwindcss:config', function (tailwindConfig) {
+                const contentPath = `${resolve('./pages')}/**/*.{vue,js,ts}`
+                tailwindConfig.content.files.push(contentPath)
+            })
+
             addServerHandler({
                 route: '/api/verify',
                 handler: resolve('./runtime/verify.patch')
             })
+
+            extendPages((pages) => {
+                pages.push({
+                    name: 'Verify',
+                    path: '/verify',
+                    file: resolve('./pages/verify.vue'),
+                })
+            })
         }
-
-
     }
 })
